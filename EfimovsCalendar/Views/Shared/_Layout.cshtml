@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title – приложение ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/style.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/Script.js")
+
+</head>
+<body onload="init()" onresize="init()">
+    <div id="header">
+        <div class="icon"></div>
+        <div onclick="location.href='/Home/Index/'"
+             class="nav-button textBtn">Today</div>
+        <div onclick="location.href='/Home/Index/@ViewBag.PreviousYear/@(ViewBag.PreviousMonth)'"
+             class="nav-button circleBtn left"></div>
+        <div onclick="location.href='/Home/Index/@ViewBag.NextYear/@(ViewBag.NextMonth)'"
+             class="nav-button circleBtn right"></div>
+        <div class="currentDate"> @ViewBag.CMonth @ViewBag.CurrentYear</div>
+        <div class="nav-button textBtn typeSelect" id="typeSelector"> Month ▼</div>
+        <div class="nav-button circleBtn notifications"></div>
+        <div class="nav-button circleBtn settings"></div>
+
+
+
+    </div>
+    <div id="wrap">
+        <div id="sideBar">
+            <div id="microCalendar"> Микро календарик
+                @*@foreach (var cell in ViewBag.Cells)
+                {
+                    <div class="microItem">
+                        <div class="date">@cell.Date.Day </div>
+                    </div>
+                }*@
+            </div>
+        </div>
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
+
+
+
