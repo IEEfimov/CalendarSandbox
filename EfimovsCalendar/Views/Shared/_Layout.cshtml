@@ -7,26 +7,36 @@
     <title>@ViewBag.Title – приложение ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/style.css")
+    @Styles.Render("~/Content/Style/header.css")
+    @Styles.Render("~/Content/Style/sidebar.css")
+    @Styles.Render("~/Content/Style/month.css")
+    @Styles.Render("~/Content/Style/dropDown.css")
+    @Styles.Render("~/Content/Style/wrapper.css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/Scripts/Script.js")
+    @Scripts.Render("~/Scripts/Calendar/resize.js")
+    @Scripts.Render("~/Scripts/Calendar/ui.js")
+
 
 </head>
 <body onload="init()" onresize="init()">
+    <div id="wrapper" onclick="hideDD()"></div>
+    <div id="dropDown">
+        <div class="dropItem" onclick="location.href = '/Month'"> Month</div>
+        <div class="dropItem" onclick="location.href = '/Week'"> Week</div>
+    </div>
     <div id="header">
         <div class="icon"></div>
-        <div onclick="location.href='/Home/Index/'"
+        <div onclick="location.href='/Month/Index/'"
              class="nav-button textBtn">Today</div>
-        <div onclick="location.href='/Home/Index/@ViewBag.PreviousYear/@(ViewBag.PreviousMonth)'"
+        <div onclick="location.href='/Month/Index/@ViewBag.PreviousYear/@(ViewBag.PreviousMonth)'"
              class="nav-button circleBtn left"></div>
-        <div onclick="location.href='/Home/Index/@ViewBag.NextYear/@(ViewBag.NextMonth)'"
+        <div onclick="location.href='/Month/Index/@ViewBag.NextYear/@(ViewBag.NextMonth)'"
              class="nav-button circleBtn right"></div>
         <div class="currentDate"> @ViewBag.CMonth @ViewBag.CurrentYear</div>
-        <div class="nav-button textBtn typeSelect" id="typeSelector"> Month ▼</div>
+        <div class="nav-button textBtn typeSelect" id="typeSelector"
+             onclick="dropDownType(this)"> Month ▼</div>
         <div class="nav-button circleBtn notifications"></div>
         <div class="nav-button circleBtn settings"></div>
-
-
-
     </div>
     <div id="wrap">
         <div id="sideBar">
@@ -41,6 +51,7 @@
         </div>
         @RenderBody()
     </div>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

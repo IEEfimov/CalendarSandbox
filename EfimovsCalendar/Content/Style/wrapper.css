@@ -1,0 +1,12 @@
+﻿#wrapper {
+    display: flex;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 4;
+    opacity: 0.4;
+    background-color: black;
+    visibility: hidden;
+
+
+}

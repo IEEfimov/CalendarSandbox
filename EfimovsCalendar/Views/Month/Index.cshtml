@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Calendarius";
+}
+
+<div id="calendar">
+    @foreach (var cell in ViewBag.Cells)
+    {
+        <div class="item" onclick="EditEventForm()">
+            <div class="date @cell.ClassName ">@cell.Date.Day </div>
+            @foreach (var ev in cell.Events)
+            {
+                <div class="event" style="background-color:@ev.getHex()">@ev.Name</div>
+            }
+        </div>
+    }
+
+</div>
