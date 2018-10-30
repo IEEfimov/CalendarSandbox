@@ -39,5 +39,11 @@ namespace EfimovsCalendar.Models
 
             return true;
         }
+
+        public CalendarVM getModel(DateTime date)
+        {
+            CalendarVM calendarVM = new CalendarVM(date);
+            return calendarVM;
+        }
     }
 }
