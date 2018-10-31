@@ -13,20 +13,12 @@ namespace EfimovsCalendar.Controllers
         public ActionResult Index(int? year, int? month)
         {
             Logic logic = new Logic();
-            DateTime currentDate;
-            List<CalendarCell> cells;
-            if (year.HasValue && month.HasValue)
-                currentDate =  new DateTime((int)year, (int)month, 1);
-            else currentDate = DateTime.Now;
+            CalendarVM model = logic.getModel(year, month);
 
-            cells = logic.getList(currentDate);
-
-            ViewBag.Cells = cells;
-            ViewBag.Model = logic.getModel(currentDate);
-            return View();
+            return View(model);
 
         }
-               
+
         public bool isSimilarDate(DateTime a, DateTime b)
         {
             if (a.Day != b.Day) return false;

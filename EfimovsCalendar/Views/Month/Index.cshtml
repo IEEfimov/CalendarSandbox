@@ -3,7 +3,7 @@
 }
 
 <div id="calendar">
-    @foreach (var cell in ViewBag.Cells)
+    @foreach (var cell in Model.Cells)
     {
         <div class="item" onclick="EditEventForm()">
             <div class="date @cell.ClassName ">@cell.Date.Day </div>

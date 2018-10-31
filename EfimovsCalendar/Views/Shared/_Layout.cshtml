@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model EfimovsCalendar.Models.CalendarVM
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,12 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title – приложение ASP.NET</title>
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/style.css")
-    @Styles.Render("~/Content/Style/header.css")
-    @Styles.Render("~/Content/Style/sidebar.css")
-    @Styles.Render("~/Content/Style/month.css")
-    @Styles.Render("~/Content/Style/dropDown.css")
-    @Styles.Render("~/Content/Style/wrapper.css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Scripts/Calendar/resize.js")
     @Scripts.Render("~/Scripts/Calendar/ui.js")
@@ -28,25 +23,23 @@
         <div class="icon"></div>
         <div onclick="location.href='/Month/Index/'"
              class="nav-button textBtn">Today</div>
-        <div onclick="location.href='/Month/Index/@ViewBag.PreviousYear/@(ViewBag.PreviousMonth)'"
+        <div onclick="location.href='/Month/Index/@Model.Previous.Year/@Model.Previous.Year)'"
              class="nav-button circleBtn left"></div>
-        <div onclick="location.href='/Month/Index/@ViewBag.NextYear/@(ViewBag.NextMonth)'"
+        <div onclick="location.href='/Month/Index/@Model.Next.Year/@Model.Next.Month'"
              class="nav-button circleBtn right"></div>
-        <div class="currentDate"> @ViewBag.CMonth @ViewBag.CurrentYear</div>
+        <div class="currentDate"> @Model.MonthName @Model.CurrentYear</div>
         <div class="nav-button textBtn typeSelect" id="typeSelector"
-             onclick="dropDownType(this)"> Month ▼</div>
+             onclick="dropDownType(this)">Month ▼</div>
         <div class="nav-button circleBtn notifications"></div>
         <div class="nav-button circleBtn settings"></div>
     </div>
     <div id="wrap">
         <div id="sideBar">
-            <div id="microCalendar"> Микро календарик
-                @*@foreach (var cell in ViewBag.Cells)
-                {
-                    <div class="microItem">
-                        <div class="date">@cell.Date.Day </div>
-                    </div>
-                }*@
+            <div id="microCalendar">
+                @foreach (var cell in Model.Cells)
+                    {
+                        <div class="microItem">@cell.Date.Day</div>
+                    }
             </div>
         </div>
         @RenderBody()

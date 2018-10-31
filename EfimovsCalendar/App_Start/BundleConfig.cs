@@ -23,8 +23,16 @@ namespace EfimovsCalendar
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                        "~/Content/bootstrap.css",
+                        "~/Content/site.css",
+                        "~/Content/style.css",
+                        "~/Content/Style/header.css",
+                        "~/Content/Style/sidebar.css",
+                        "~/Content/Style/month.css",
+                        "~/Content/Style/dropDown.css",
+                        "~/Content/Style/wrapper.css"));
+            bundles.Add(new StyleBundle("~/Content/month").Include(
+                ));
         }
     }
 }
